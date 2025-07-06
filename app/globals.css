@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+
+    /* Editor-specific colors */
+    --editor-bg: 222.2 84% 4.9%;
+    --editor-fg: 210 40% 98%;
+    --editor-selection: 221.2 83.2% 53.3%;
+    --editor-cursor: 210 40% 98%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 94.1%;
+
+    /* Editor-specific colors for dark mode */
+    --editor-bg: 222.2 84% 4.9%;
+    --editor-fg: 210 40% 98%;
+    --editor-selection: 217.2 91.2% 59.8%;
+    --editor-cursor: 210 40% 98%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings:
+      'rlig' 1,
+      'calt' 1;
+  }
+
+  /* Custom scrollbar for dark mode */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/30 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/50;
+  }
+
+  /* Monaco Editor customizations */
+  .monaco-editor {
+    @apply font-mono;
+  }
+
+  .monaco-editor .margin {
+    @apply bg-editor-bg;
+  }
+
+  .monaco-editor .monaco-editor-background {
+    @apply bg-editor-bg;
+  }
+
+  .monaco-editor .inputarea {
+    @apply bg-editor-bg text-editor-fg;
+  }
+}
+
+@layer components {
+  .editor-container {
+    @apply h-full w-full bg-editor-bg text-editor-fg;
+  }
+
+  .sidebar {
+    @apply w-64 bg-card border-r border-border h-full overflow-y-auto;
+  }
+
+  .top-bar {
+    @apply h-12 bg-card border-b border-border flex items-center justify-between px-4;
+  }
+
+  .main-content {
+    @apply flex-1 bg-background overflow-hidden;
+  }
+
+  .collaboration-indicator {
+    @apply absolute top-2 right-2 bg-primary/10 border border-primary/20 rounded-full px-2 py-1 text-xs text-primary;
+  }
+
+  .user-cursor {
+    @apply absolute w-0.5 h-5 bg-primary animate-pulse-glow;
+  }
+
+  .user-avatar {
+    @apply w-6 h-6 rounded-full border-2 border-background;
+  }
+}
